@@ -13,13 +13,16 @@ import frc.robot.RobotContainer;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class ReleaseBallThroughCartridgeCommandGroup extends ParallelCommandGroup {
   /** Creates a new ReleaseBallThroughCartridgeCommandGroup. */
-  public ReleaseBallThroughCartridgeCommandGroup() {
+  public ReleaseBallThroughCartridgeCommandGroup(RobotContainer robotContainer) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       //new RetractCommand(),
-      new WaitCommand(0.15));
+      new IncrementHopperCommand(0.25, robotContainer)  // slow down to see if its being called
+      //new WaitCommand(0.15)
+      );
       //new ExtendCommand());
+  
     
   }
 }

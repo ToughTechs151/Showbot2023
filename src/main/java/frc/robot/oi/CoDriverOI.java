@@ -38,7 +38,7 @@ public class CoDriverOI extends OI {
         rightBumper.whileTrue(new ReleaseBallPerSecondThroughHopperCommandGroup(robotContainer));
     
         leftBumper = new JoystickButton(joystick, Constants.LEFT_BUMPER);    
-        leftBumper.onTrue(new ReleaseBallThroughCartridgeCommandGroup());
+        leftBumper.onTrue(new ReleaseBallThroughCartridgeCommandGroup(robotContainer));
 
         a = new JoystickButton(joystick, Constants.A);
         // rpm
