@@ -72,4 +72,17 @@ public final class Constants {
 	public static final double kIl = 0.001;
 
 	public static final double kDl = 0;   
+
+    // Run time options
+
+    // Set to true to log Joystick data. To false otherwise.
+    public static final boolean LOG_JOYSTICK_DATA = true;
+
+    // Set to true to send telemetry data to Live Window. To false
+    // to disable it.
+    public static final boolean LW_TELEMETRY_ENABLE = false;
+
+    // Set to true to log loop timing data. To false to disable.
+    public static final boolean LOOP_TIMING_LOG = true;
+    
 }
