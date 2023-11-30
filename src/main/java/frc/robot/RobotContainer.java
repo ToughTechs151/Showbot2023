@@ -7,6 +7,7 @@ package frc.robot;
 import java.rmi.dgc.Lease;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveWithJoystickCommand;
 import frc.robot.oi.CoDriverOI;
@@ -32,6 +33,7 @@ public class RobotContainer {
   private final HopperSubsystem hopperSubsystem_ = new HopperSubsystem();
   private DriverOI driverOI_ = null; 
   private CoDriverOI coDriverOI_ = null;
+  private PowerDistribution pdp = new PowerDistribution();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -91,4 +93,14 @@ public class RobotContainer {
    * @return
    */
   public HopperSubsystem getHopperSubsystem() { return hopperSubsystem_; }
+
+    /**
+   * Use this to get the PDP for data logging.
+   *
+   * @return The PowerDistribution module.
+   */
+  public PowerDistribution getPdp() {
+    return this.pdp;
+  }
+
 }

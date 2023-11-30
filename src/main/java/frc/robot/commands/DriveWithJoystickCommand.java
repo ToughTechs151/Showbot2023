@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.DataLogging;
 import frc.robot.oi.DriverOI;
 import frc.robot.subsystems.ChassisSubsystem;
 
@@ -20,6 +21,7 @@ public class DriveWithJoystickCommand extends CommandBase {
     chassisSubsystem_ = chassisSubsystem;
     driverOI_ = driverOI;
     addRequirements(chassisSubsystem_);
+    DataLogging.getInstance().logCommand(this.chassisSubsystem_.getName(), this.getName(), this);
   }
 
   // Called when the command is initially scheduled.

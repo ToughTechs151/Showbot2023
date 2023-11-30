@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.DataLogging;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.LauncherPIDSubsystem;
 
@@ -17,6 +18,7 @@ public class DisableLauncherCommand extends CommandBase {
     launcherPIDSubsystem_ = robotConmtContainer.getLauncherPIDSubsystem();
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(launcherPIDSubsystem_);
+    DataLogging.getInstance().logCommand(this.launcherPIDSubsystem_.getName(), this.getName(), this);
   }
 
   // Called when the command is initially scheduled.

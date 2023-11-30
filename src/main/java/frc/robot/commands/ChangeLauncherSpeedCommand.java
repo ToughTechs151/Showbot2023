@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.DataLogging;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.LauncherPIDSubsystem;
 
@@ -23,6 +24,7 @@ public class ChangeLauncherSpeedCommand extends CommandBase {
     addRequirements(launcherPIDSubsystem_);
     this.setpoint_ = setpoint;
     SmartDashboard.putNumber("LauncherSpeed", Constants.LAUNCHER_SPEED);
+    DataLogging.getInstance().logCommand(this.launcherPIDSubsystem_.getName(), this.getName(), this);
   }
 
   // Called when the command is initially scheduled.

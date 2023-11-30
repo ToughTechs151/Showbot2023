@@ -10,6 +10,7 @@ import java.util.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.smartdashboard.*;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.DataLogging;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.HopperSubsystem;
 
@@ -28,6 +29,7 @@ public class IncrementHopperCommand extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(hopperSubsystem_);
     this.speed_ = speed;
+    DataLogging.getInstance().logCommand(this.hopperSubsystem_.getName(), this.getName(), this);
   }
 
   // Called when the command is initially scheduled.

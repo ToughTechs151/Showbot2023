@@ -26,6 +26,7 @@ public class HopperSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putBoolean( "Hopper Switch",  hopperSwitch_.get());
+    SmartDashboard.putNumber("Hopper Motor", hopperMotor_.get());
   }
 
   public void stopHopper() {
