@@ -18,7 +18,8 @@ public class DisableLauncherCommand extends CommandBase {
     launcherPIDSubsystem_ = robotConmtContainer.getLauncherPIDSubsystem();
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(launcherPIDSubsystem_);
-    DataLogging.getInstance().logCommand(this.launcherPIDSubsystem_.getName(), this.getName(), this);
+    DataLogging.getInstance()
+        .logCommand(this.launcherPIDSubsystem_.getName(), this.getName(), this);
   }
 
   // Called when the command is initially scheduled.

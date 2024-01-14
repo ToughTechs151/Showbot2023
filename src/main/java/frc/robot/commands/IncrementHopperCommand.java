@@ -1,21 +1,18 @@
-
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands;
 
-import java.util.TimerTask;
-import java.util.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.wpilibj.smartdashboard.*;
+// import edu.wpi.first.wpilibj.smartdashboard.*;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.DataLogging;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.HopperSubsystem;
 
 public class IncrementHopperCommand extends CommandBase {
-  //private Timer timer_;
+  // private Timer timer_;
   private double speed_;
   private HopperSubsystem hopperSubsystem_ = null;
   private boolean initialState_;
@@ -35,34 +32,33 @@ public class IncrementHopperCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    SmartDashboard.getBoolean( "Initial Hopper Code",  true);
-    
+    SmartDashboard.getBoolean("Initial Hopper Code", true);
+
     /*
-    timer_ = new Timer();
-    timer_.schedule(new TimerTask() {
-      @Override
-      public void run() {
-        SmartDashboard.putString("Hopper status", " Test ***Hopper Jammed***");
-        end(false);
-      }
-    }, 750L);
-*/
+        timer_ = new Timer();
+        timer_.schedule(new TimerTask() {
+          @Override
+          public void run() {
+            SmartDashboard.putString("Hopper status", " Test ***Hopper Jammed***");
+            end(false);
+          }
+        }, 750L);
+    */
 
     initialState_ = hopperSubsystem_.getHopperSwitchState();
     lastState_ = hopperSubsystem_.getHopperSwitchState();
     increment_ = 0;
-    SmartDashboard.getBoolean( "Initial Hopper Switch",  initialState_);
+    SmartDashboard.getBoolean("Initial Hopper Switch", initialState_);
     hopperSubsystem_.driveHopper(speed_);
-    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     thisState_ = hopperSubsystem_.getHopperSwitchState();
-    //SmartDashboard.putNumber("Hopper Switch", thisState_);
-//    SmartDashboard.putNumber(key "HopperSwitch",thisState_);
-    if(thisState_ != lastState_) {
+    // SmartDashboard.putNumber("Hopper Switch", thisState_);
+    //    SmartDashboard.putNumber(key "HopperSwitch",thisState_);
+    if (thisState_ != lastState_) {
       increment_++;
       lastState_ = thisState_;
     }
@@ -74,10 +70,8 @@ public class IncrementHopperCommand extends CommandBase {
   public void end(boolean interrupted) {
     hopperSubsystem_.driveHopper(0);
     // timer_.cancel();
-    if (initialState_)
-      increment_ = 1;
-    else
-      increment_ = 2;
+    if (initialState_) increment_ = 1;
+    else increment_ = 2;
   }
 
   // Returns true when the command should end.
@@ -86,8 +80,8 @@ public class IncrementHopperCommand extends CommandBase {
   public boolean isFinished() {
     boolean passed1;
     boolean passed2;
-    passed1 = increment_>= 1;
+    passed1 = increment_ >= 1;
     passed2 = thisState_ != lastState_;
-    return (passed1 );
+    return (passed1);
   }
 }

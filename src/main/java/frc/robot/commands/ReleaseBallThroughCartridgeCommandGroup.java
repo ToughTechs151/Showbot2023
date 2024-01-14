@@ -5,7 +5,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.DataLogging;
 import frc.robot.RobotContainer;
 
@@ -18,13 +17,11 @@ public class ReleaseBallThroughCartridgeCommandGroup extends ParallelCommandGrou
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      //new RetractCommand(),
-      new IncrementHopperCommand(0.25, robotContainer)  // slow down to see if its being called
-      //new WaitCommand(0.15)
-      );
-      //new ExtendCommand());
+        // new RetractCommand(),
+        new IncrementHopperCommand(0.25, robotContainer) // slow down to see if its being called
+        // new WaitCommand(0.15)
+        );
+    // new ExtendCommand());
     DataLogging.getInstance().logCommand(this.getName(), this);
-  
-    
   }
 }

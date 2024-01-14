@@ -24,7 +24,8 @@ public class ChangeLauncherSpeedCommand extends CommandBase {
     addRequirements(launcherPIDSubsystem_);
     this.setpoint_ = setpoint;
     SmartDashboard.putNumber("LauncherSpeed", Constants.LAUNCHER_SPEED);
-    DataLogging.getInstance().logCommand(this.launcherPIDSubsystem_.getName(), this.getName(), this);
+    DataLogging.getInstance()
+        .logCommand(this.launcherPIDSubsystem_.getName(), this.getName(), this);
   }
 
   // Called when the command is initially scheduled.
@@ -38,7 +39,7 @@ public class ChangeLauncherSpeedCommand extends CommandBase {
     double speed = SmartDashboard.getNumber("LauncherSpeed", Constants.LAUNCHER_SPEED) / 60;
     launcherPIDSubsystem_.setSetpoint(speed);
     launcherPIDSubsystem_.enable();
-    //launcherPIDSubsystem_.setspeed(0.5);
+    // launcherPIDSubsystem_.setspeed(0.5);
     isFinished_ = true;
   }
 

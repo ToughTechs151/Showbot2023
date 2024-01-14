@@ -26,7 +26,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
-    
     // Initialize the data logging.
     datalog = DataLogging.getInstance();
 
@@ -34,7 +33,6 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     robotContainer_ = new RobotContainer();
     datalog.dataLogRobotContainerInit(this.robotContainer_);
-
   }
 
   /**
@@ -54,7 +52,6 @@ public class Robot extends TimedRobot {
 
     // must be at the end of robotPeriodic
     datalog.periodic();
-
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
