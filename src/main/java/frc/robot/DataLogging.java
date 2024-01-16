@@ -188,7 +188,8 @@ public class DataLogging {
    * @param com The command object.
    */
   public final void logCommand(String ssName, String comName, Sendable com) {
-    sbCommandsTab.getLayout(ssName, BuiltInLayouts.kList).withSize(2, 0).add(comName, com);
+    // Disable this due to errors when command is created more than once
+    // sbCommandsTab.getLayout(ssName, BuiltInLayouts.kList).withSize(2, 0).add(comName, com);
     // ISSUE #2 Hide the command name label.
     // Add property to layout to set label position to HIDDEN.
     // See "Adding widgets to layouts" in Shuffleboard docs.
