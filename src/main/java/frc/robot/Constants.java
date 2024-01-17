@@ -83,5 +83,6 @@ public final class Constants {
   public static final boolean LW_TELEMETRY_ENABLE = false;
 
   // Set to true to log loop timing data. To false to disable.
-  public static final boolean LOOP_TIMING_LOG = true;
+  public static final boolean LOOP_TIMING_LOG = false;
+  public static final boolean COMMAND_LOG = false;
 }

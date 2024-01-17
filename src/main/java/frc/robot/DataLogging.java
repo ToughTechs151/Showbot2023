@@ -50,7 +50,7 @@ public class DataLogging {
     }
 
     ShuffleboardTab sbRobotTab = Shuffleboard.getTab("Robot");
-    pdpWidget = sbRobotTab.getLayout("PDP", BuiltInLayouts.kGrid).withSize(3, 3);
+    pdpWidget = sbRobotTab.getLayout("PDP", BuiltInLayouts.kGrid).withSize(3, 6);
     ShuffleboardLayout rcWidget =
         sbRobotTab.getLayout("RobotController", BuiltInLayouts.kGrid).withSize(3, 3);
 
@@ -82,20 +82,24 @@ public class DataLogging {
     // Set the scheduler to log Shuffleboard events for command initialize,
     // interrupt, finish
 
-    StringLogEntry commandLog = new StringLogEntry(log, "/command/event");
-    CommandScheduler.getInstance()
-        .onCommandInitialize(
-            command -> commandLog.append("Command initialized:" + command.getName()));
-    CommandScheduler.getInstance()
-        .onCommandExecute(command -> commandLog.append("Command execute:" + command.getName()));
-    CommandScheduler.getInstance()
-        .onCommandInterrupt(
-            command -> commandLog.append("Command interrupted" + command.getName()));
-    CommandScheduler.getInstance()
-        .onCommandFinish(command -> commandLog.append("Command finished" + command.getName()));
-    commandLog.append("Opened command log");
+    if (Constants.COMMAND_LOG) {
+      StringLogEntry commandLog = new StringLogEntry(log, "/command/event");
+      CommandScheduler.getInstance()
+          .onCommandInitialize(
+              command -> commandLog.append("Command initialized:" + command.getName()));
+      CommandScheduler.getInstance()
+          .onCommandExecute(command -> commandLog.append("Command execute:" + command.getName()));
+      CommandScheduler.getInstance()
+          .onCommandInterrupt(
+              command -> commandLog.append("Command interrupted" + command.getName()));
+      CommandScheduler.getInstance()
+          .onCommandFinish(command -> commandLog.append("Command finished" + command.getName()));
+      commandLog.append("Opened command log");
+    }
 
-    loopTime = new DoubleLogEntry(log, "/robot/LoopTime");
+    if (Constants.LOOP_TIMING_LOG) {
+      loopTime = new DoubleLogEntry(log, "/robot/LoopTime");
+    }
   }
 
   private static class InstanceHolder {
